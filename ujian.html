@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<title>ujian</title>
+	</head>
+	<body>
+		<script>
+			let jumlah_pembeli = 2;
+			let jumlah = [];
+			let harga = 5000;
+			
+			let totalpendapatan = 0;
+			let pembelidiskonkecil = 0;
+			let pembelidiskonbesar = 0;
+			
+			for (let i = 1; i <= jumlah_pembeli; i++) {
+				console.log (`======PEMBELI KE-${i}======`)
+				let jumlahbuku= parseFloat(prompt("jumlah buku: "));
+				let totalharga = jumlahbuku * harga;
+				let diskon;
+				let dkb;
+				
+				if (jumlahbuku <= 100) {
+					diskon = 0;
+					dkb = "tidak ada diskon"
+				}else
+					if (jumlahbuku >100 && jumlahbuku <= 200) {
+						diskon = 10;
+						dkb = "diskon kecil";
+						pembelidiskonkecil++;
+					}else	
+						if (jumlahbuku > 100 && jumlahbuku <= 200) {
+							diskon = 15;
+							dkb = "diskon kecil";
+						}else 
+							if (jumlahbuku > 200) {
+								diskon = 7;
+								dkb = "diskon besar";
+								pembelidiskonbesar++;
+							}else	
+								if (jumlahbuku > 200) {
+									diskon = 17;
+									dkb = "diskon besar";
+									pembelidiskonbesar++;
+								}else{
+									diskon = 27;
+									dkb = "diskon besar";
+								}
+								
+				let  potongan = totalharga * (diskon / 100);
+				let totalbayar = totalharga - potongan;
+				
+				totalpendapatan += totalbayar;
+				
+				jumlah.push ({jumlahbuku, totalharga, dkb, totalbayar, potongan});
+				}
+				let rata = totalpendapatan / 2;
+				console.log (`======TABEL TRANSAKSI======`)
+				
+				jumlah.forEach((s, index = 0) => {
+					console.log (`pembeli: ${index + 1}, jumlah buku: ${s.jumlahbuku}, jenis diskon: ${s.dkb}, total bayar: ${s.totalbayar},`);
+				});
+				
+				console.log (`======REKAPAN======`);
+				console.log (`total pendapatan: ${totalpendapatan}`);
+				console.log (`rata-rata per pembeli: ${rata}`);
+				console.log (`pembeli diskon kecil: ${pembelidiskonkecil}`);
+				console.log (`pembeli diskon besar: ${pembelidiskonbesar}`);
+				
+		</script>
+	</body>
+</html>
